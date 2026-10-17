@@ -1,13 +1,278 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Comuns</title>
-  <meta http-equiv="refresh" content="0; url=https://comuns-ai.github.io/comuns/">
-  <link rel="canonical" href="https://comuns-ai.github.io/comuns/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Comuns is a community proposal for open-source, decentralized LLM inference, settled on Arbitrum One. A draft; nothing runs yet.">
+<meta name="referrer" content="no-referrer">
+<title>Comuns — open, community-built AI inference</title>
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <p><a href="https://comuns-ai.github.io/comuns/">Comuns pitch deck</a></p>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="wordmark" href="#top" aria-label="Comuns, home">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <rect width="64" height="64" rx="14" fill="#0b1418"/>
+        <g stroke="#7fd0dc" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.9">
+          <path d="M14 42 L32 18 L50 42 Z"/>
+          <path d="M14 42 L32 34 L50 42"/>
+          <path d="M32 18 L32 34"/>
+        </g>
+        <g fill="#0b5f6e" stroke="#7fd0dc" stroke-width="2.5">
+          <circle cx="14" cy="42" r="5"/>
+          <circle cx="50" cy="42" r="5"/>
+          <circle cx="32" cy="18" r="5"/>
+        </g>
+        <circle cx="32" cy="34" r="4" fill="#fbfaf6"/>
+      </svg>
+      <span>Comuns</span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#why">Why</a>
+      <a href="#how">How</a>
+      <a href="#principles">Principles</a>
+      <a href="#status">Status</a>
+      <a href="#involved">Get involved</a>
+      <a class="nav-github" href="https://github.com/Comuns-ai/comuns">GitHub repository</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+  <div class="wrap hero-content">
+    <p class="status-pill"><span class="dot" aria-hidden="true"></span>Draft proposal · nothing runs yet</p>
+    <h1 id="hero-title">Open, community-built AI inference for everyone</h1>
+    <p class="lede">A community proposal for open-source, decentralized LLM inference, settled on Arbitrum One. <em>Comuns</em> is Portuguese for “commons”.</p>
+    <p class="hero-figure">Pictured: a mesh of nodes. A wallet sends an encrypted prompt through a relay run by a different operator to the node it chose, and the sealed answer comes back the same way.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/comuns/">Read the pitch deck</a>
+      <a class="btn btn-ghost" href="https://github.com/Comuns-ai/comuns/blob/main/CONTRIBUTING.md">How to contribute</a>
+    </div>
+  </div>
+</section>
+
+<section class="section why" id="why" aria-labelledby="why-title">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Why</p>
+    <h2 id="why-title" data-reveal>The closed door</h2>
+    <div class="two-col">
+      <div data-reveal>
+        <p class="big">Hosted models concentrate capability in a few providers. A cheap API still lets the provider read every prompt and refuse service.</p>
+      </div>
+      <div data-reveal>
+        <p>Comuns does not claim a lower price than hosted APIs. The case is control: code, specifications and economics that anyone can inspect, run and fork.</p>
+        <p>The repository is the proposal. Every claim lives in a document anyone can challenge.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section how" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>How</p>
+    <h2 id="how-title" data-reveal>How one prompt flows</h2>
+    <p class="intro" data-reveal>By default one node runs a request: pick a model, then a node from its pool. Collective answers and decomposed plans are opt-in.</p>
+
+    <div class="how-layout">
+    <div class="how-diagram" data-reveal>
+      <div class="flow-chips" role="list" aria-label="The path of one prompt">
+        <span class="chip" role="listitem">Wallet</span>
+        <span class="chip-link"><span class="chip-arrow" aria-hidden="true"></span><span class="chip" role="listitem">Encrypted prompt</span></span>
+        <span class="chip-link"><span class="chip-arrow" aria-hidden="true"></span><span class="chip" role="listitem">Rust node</span></span>
+        <span class="chip-link"><span class="chip-arrow" aria-hidden="true"></span><span class="chip" role="listitem">Sealed answer</span></span>
+      </div>
+      <p class="flow-notes"><span>Settlement: Arbitrum One.</span> <span>Optional parallel workers: opt-in, disclosed.</span></p>
+    </div>
+
+    <div class="steps" data-reveal data-reveal-group>
+      <svg class="steps-line" viewBox="0 0 2 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M1 0 V100" pathLength="1" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <ol class="steps-list">
+        <li class="step">
+          <span class="step-num" aria-hidden="true">1</span>
+          <h3>Deposit once</h3>
+          <p>Deposit once into the credit pool.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">2</span>
+          <h3>Encrypt and relay</h3>
+          <p>Encrypt the prompt locally; send it through a relay run by someone else.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">3</span>
+          <h3>The node opens the session</h3>
+          <p>The node opens the session with your unlinkable credit and runs the model off-chain; chunks return sealed.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">4</span>
+          <h3>A voucher per chunk</h3>
+          <p>The client signs a voucher per chunk.</p>
+        </li>
+      </ol>
+    </div>
+    </div>
+    <p class="aside-note" data-reveal>A paid orchestrator is disclosed, never mandatory.</p>
+  </div>
+</section>
+
+<section class="section principles" id="principles" aria-labelledby="principles-title">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Principles</p>
+    <h2 id="principles-title" data-reveal>What the proposal commits to</h2>
+    <ul class="grid" data-reveal data-reveal-group>
+      <li class="card">
+        <h3>Anonymous by default</h3>
+        <p>The node you pick can read your prompt, but neither it nor the chain should learn who sent it. Standard mode hides who asked, not what was asked.</p>
+        <p class="fine">Attested (TEE) mode is opt-in: there the node should not be able to read the prompt either, barring a physical attack on the hardware.</p>
+        <a href="https://github.com/Comuns-ai/comuns/blob/main/docs/adr/0010-anonymous-by-default.md">The anonymous-by-default decision record</a>
+      </li>
+      <li class="card">
+        <h3>Encrypted transport</h3>
+        <p>Two-way encryption is RFC 9180 HPKE, and client-to-node traffic uses RFC 9458 Oblivious HTTP.</p>
+        <p class="fine">The relay sees your network address and not your prompt. The node sees your prompt and not your network address.</p>
+        <a href="https://github.com/Comuns-ai/comuns/blob/main/docs/adr/0003-hpke-and-the-executor-plaintext-limit.md">The HPKE transport decision record</a>
+      </li>
+      <li class="card">
+        <h3>ETH on Arbitrum One</h3>
+        <p>Arbitrum One settles sessions in ETH. The chain sees a session, never a payer.</p>
+        <p class="fine">Protocol fee: zero. The inference payment is not L2 gas.</p>
+        <a href="https://github.com/Comuns-ai/comuns/blob/main/docs/adr/0001-settle-on-arbitrum-one-evm-not-stylus.md">The Arbitrum One settlement decision record</a>
+      </li>
+      <li class="card">
+        <h3>No token</h3>
+        <p>v1 does not issue a protocol token. No token gate and no coin vote: a class S operator has an equal voice.</p>
+        <a href="https://github.com/Comuns-ai/comuns/blob/main/docs/adr/0007-no-protocol-token-in-v1.md">The no-token decision record</a>
+      </li>
+      <li class="card">
+        <h3>Rust nodes, pluggable backends</h3>
+        <p>Inference runs off-chain in a Rust node with pluggable backends.</p>
+        <p class="fine">Rust alone is not claimed to make inference faster; the kernels do the work.</p>
+        <a href="https://github.com/Comuns-ai/comuns/blob/main/docs/node/node-design.md">The node design document</a>
+      </li>
+      <li class="card">
+        <h3>Hardware classes S to X</h3>
+        <p>Participation from CPU-only class S to multi-GPU class X, subject to measured capability and model fit. Stronger hardware charges more for the same model and weaker hardware charges less.</p>
+        <p class="fine">CPU-only participation is a target to be validated. Classes come from a public self-benchmark, which is not an unfakeable proof.</p>
+        <a href="https://github.com/Comuns-ai/comuns/blob/main/docs/node/hardware-classes-and-benchmarks.md">Hardware classes and benchmarks</a>
+      </li>
+      <li class="card">
+        <h3>Open source</h3>
+        <p>Apache-2.0 for code and documents; DCO sign-off, no CLA.</p>
+        <p class="fine">If the community disagrees with a direction, it can fork the specifications, the contracts and the node.</p>
+        <a href="https://github.com/Comuns-ai/comuns/blob/main/CONTRIBUTING.md">Contributing guide</a>
+      </li>
+      <li class="card">
+        <h3>Governance by CIPs</h3>
+        <p>Decisions are CIPs: Draft, Review, Last Call, Final. Working groups review; a CIP decides.</p>
+        <p class="fine">Anyone can write a CIP. Decisions follow the CIP process and rough consensus in working groups, not coin votes.</p>
+        <a href="https://github.com/Comuns-ai/comuns/blob/main/GOVERNANCE.md">Governance document</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section status" id="status" aria-labelledby="status-title">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Status</p>
+    <h2 id="status-title" data-reveal>What exists today, and what does not</h2>
+    <div class="two-col status-cols">
+      <div class="status-box exists" data-reveal>
+        <h3>Exists</h3>
+        <ul>
+          <li>A draft proposal: documents, decision records and CIPs, written in the open.</li>
+          <li>Documentation checker scripts in the repository.</li>
+          <li>A pitch deck, written in Markdown and rendered to a self-contained HTML page.</li>
+        </ul>
+      </div>
+      <div class="status-box missing" data-reveal>
+        <h3>Does not exist</h3>
+        <ul>
+          <li>No protocol implementation runs yet.</li>
+          <li>No contract is deployed, no node exists, no relay exists.</li>
+          <li>No maintainer is seated, no audit has been performed and no mainnet date exists.</li>
+          <li>Price bands are unset. Class claims are self-benchmarks, fakeable.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="status-note" data-reveal>We make no claim of a mainnet date, an audit, a grant, a partnership, existing users or a price lower than hosted APIs. No maintainer is seated yet, and contributors may not come; the plan states its risks openly.</p>
+
+    <h3 class="roadmap-title" data-reveal>From proposal to running code</h3>
+    <ol class="timeline" data-reveal data-reveal-group aria-label="Proposed phases, in order">
+      <li class="phase"><span class="phase-num">Phase 0</span><h4>Documentation baseline</h4><p>This documentation.</p></li>
+      <li class="phase"><span class="phase-num">Phase 1</span><h4>Sepolia slice</h4><p>Relay plus credit session.</p></li>
+      <li class="phase"><span class="phase-num">Phase 2</span><h4>Contexts and classes</h4><p>Ownerless contexts, pools, sheet, orchestrator.</p></li>
+      <li class="phase"><span class="phase-num">Phase 3</span><h4>Verification spike</h4><p>Attested nodes plus the spikes. Phase 3 may end with a negative result.</p></li>
+      <li class="phase"><span class="phase-num">Phase 4</span><h4>External review</h4><p>Reviews, then go/no-go.</p></li>
+    </ol>
+    <p class="timeline-note" data-reveal>There are no dates. Phases are ordered, not scheduled. <a href="https://github.com/Comuns-ai/comuns/blob/main/docs/project-plan.md">Read the project plan</a> for exit criteria.</p>
+  </div>
+</section>
+
+<section class="section involved" id="involved" aria-labelledby="involved-title">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>Get involved</p>
+    <h2 id="involved-title" data-reveal>Build it with us</h2>
+    <p class="intro" data-reveal>Comuns is built by whoever shows up and writes in public. You do not need a hardware class, a stake, or a holding to review, comment or propose. The only channels are issues and CIP comments on the repository.</p>
+    <div class="two-col involved-cols">
+      <div class="involve-box" data-reveal>
+        <h3>For contributors</h3>
+        <ol class="involve-list">
+          <li><a href="https://github.com/Comuns-ai/comuns/pull/7">Review CIP-0003 (pull request #7)</a>. A Draft proposal for seating the first maintainer. Any person other than the author can review it: a public comment that approves or names a blocking objection.</li>
+          <li><a href="https://github.com/Comuns-ai/comuns/tree/main/docs/cip">Comment on the CIPs</a>. None are Final.</li>
+          <li>Join a working group: Protocol, Node, Cryptography, Contracts, Applications or Documentation. Say so in a public issue or on a relevant CIP.</li>
+          <li><a href="https://github.com/Comuns-ai/comuns/blob/main/CONTRIBUTING.md">Read the contributing guide</a>. Contributions use the Developer Certificate of Origin; there is no CLA.</li>
+          <li>Later, run a node on any hardware class. CPU-only class S is still a target to be validated. See <a href="https://github.com/Comuns-ai/comuns/blob/main/docs/project-plan.md">the project plan</a> for its proposed phases.</li>
+        </ol>
+      </div>
+      <div class="involve-box" data-reveal>
+        <h3>For supporters</h3>
+        <ol class="involve-list">
+          <li><a href="/comuns/">Read the pitch deck</a> and <a href="https://github.com/Comuns-ai/comuns/blob/main/docs/project-plan.md">the project plan</a>.</li>
+          <li><a href="https://github.com/Comuns-ai/comuns/issues">Open an issue</a> to talk. Issues are for document comments and documentation flaws.</li>
+        </ol>
+        <p class="fine">This draft names no discussion channel beyond issues and CIP comments on the repository.</p>
+      </div>
+    </div>
+    <div class="cta-row" data-reveal>
+      <a class="btn btn-primary" href="https://github.com/Comuns-ai/comuns">Open the repository</a>
+      <a class="btn btn-ghost" href="https://github.com/Comuns-ai/comuns/tree/main/docs">Browse the documents</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <p class="footer-word">Comuns</p>
+      <p class="fine">Open, community-built AI inference for everyone. A draft proposal; nothing runs yet.</p>
+      <p class="fine warn">Never paste prompts, keys or seed phrases into issues.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Project links">
+      <a href="https://github.com/Comuns-ai/comuns">Repository</a>
+      <a href="https://github.com/Comuns-ai/comuns/tree/main/docs">Documents</a>
+      <a href="/comuns/">Pitch deck</a>
+      <a href="https://github.com/Comuns-ai/comuns/tree/main/docs/cip">CIPs</a>
+      <a href="https://github.com/Comuns-ai/comuns/blob/main/GOVERNANCE.md">Governance</a>
+      <a href="https://github.com/Comuns-ai/comuns/blob/main/CONTRIBUTING.md">Contributing</a>
+      <a href="https://github.com/Comuns-ai/comuns/blob/main/SECURITY.md">Security policy</a>
+      <a href="https://github.com/Comuns-ai/comuns/issues">Issues</a>
+    </nav>
+    <p class="fine footer-licence">Code and documentation use Apache-2.0, and contributions use the DCO. Model weights retain their own licenses. This page loads nothing from third parties: no fonts, scripts, images or analytics.</p>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
 </body>
 </html>
